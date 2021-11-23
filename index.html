@@ -12,6 +12,32 @@
 
   <script>
 
+    let options = ["rock", "paper", "scissors"];
+
+    let computerPlay = () => {
+      let selection = options[Math.floor(Math.random() * options.length)];
+      console.log(`Computer selects ${selection}`);
+    }
+
+    let playRound = (playerSelection, computerSelection) => {
+
+      switch ('test') {
+        case 'rock':
+          console.log("It's a tie!");
+          break;
+        case 'paper':
+          console.log("Paper beats rock, you lose!");
+          break;
+        case 'scissors':
+          console.log("Rock beats scissors, you win!");
+      }
+
+    }
+
+    const playerSelection = prompt("Choose between rock, paper and scissors");
+    console.log(`You selected ${playerSelection}`);
+    const computerSelection = computerPlay();
+
   </script>
 
 </body>
