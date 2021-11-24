@@ -17,26 +17,57 @@
     let computerPlay = () => {
       let selection = options[Math.floor(Math.random() * options.length)];
       console.log(`Computer selects ${selection}`);
+      return selection;
     }
 
     let playRound = (playerSelection, computerSelection) => {
 
-      switch ('test') {
-        case 'rock':
-          console.log("It's a tie!");
-          break;
-        case 'paper':
-          console.log("Paper beats rock, you lose!");
-          break;
-        case 'scissors':
-          console.log("Rock beats scissors, you win!");
+      if (playerSelection === 'rock') {
+        switch (computerSelection) {
+          case 'rock':
+            console.log("It's a tie!");
+            break;
+          case 'paper':
+            console.log("Paper beats rock, you lose!");
+            break;
+          case 'scissors':
+            console.log("Rock beats scissors, you win!");
+            break;
+        }
+      } else if (playerSelection === 'paper') {
+        switch (computerSelection) {
+          case 'rock':
+            console.log("Paper beats rock, you win!");
+            break;
+          case 'paper':
+            console.log("It's a tie!");
+            break;
+          case 'scissors':
+            console.log("Scissors beats paper, you lose!");
+            break;
+        }
+      } else if (playerSelection === 'scissors') {
+        switch (computerSelection) {
+          case 'rock':
+            console.log("Rock beats scissors, you lose!");
+            break;
+          case 'paper':
+            console.log("Scissors beats paper, you win!");
+            break;
+          case 'scissors':
+            console.log("It's a tie!");
+            break;
+        }
+      } else {
+        console.log("Please select a valid option!")
       }
 
     }
 
-    const playerSelection = prompt("Choose between rock, paper and scissors");
+    const playerSelection = prompt("Choose between rock, paper and scissors").toLowerCase();
     console.log(`You selected ${playerSelection}`);
-    const computerSelection = computerPlay();
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
 
   </script>
 
