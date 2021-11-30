@@ -20,7 +20,9 @@
 
   <p id="comp-choice" />
   <p id="results" />
-  <p id="score" />
+  <p id="current-score" />
+  <p id="final-score" />
+
 
   <script>
 
@@ -57,26 +59,22 @@
       playRound(playerSelection, computerSelection);
     });
 
-    let game = () => {
+    let match = () => {
 
-      //for (let i = 1; i < 6; i++) {
+      document.getElementById("current-score").innerHTML = `Current score is Player: 
+        ${playerScore}, Computer: ${computerScore}`;
 
-      //console.log(`Round: ${i}`);
+      if (playerScore === 5) {
+        document.getElementById("final-score").innerHTML = `Player wins!`;
+      } else if (computerScore === 5) {
+        document.getElementById("final-score").innerHTML = `Computer wins!`;
+      }
 
-      const playerSelection = prompt("Choose between rock, paper and scissors").toLowerCase();
-      console.log(`You selected ${playerSelection}`);
-      let computerSelection = computerPlay();
-
-      playRound(playerSelection, computerSelection);
     }
 
-    //if (playerScore > computerScore) {
-    //console.log("Player wins the match!");
-    //} else if (computerScore > playerScore) {
-    //console.log("Computer wins the match!");
-    //} else {
-    //console.log("Player and Computer tie the match!");
-    //}
+    let reset = () => {
+
+    }
 
     let playRound = (playerSelection, computerSelection) => {
 
@@ -119,21 +117,23 @@
           case 'rock':
             document.getElementById("comp-choice").innerHTML = "Computer selects rock!";
             document.getElementById("results").innerHTML = "Rock beats scissors, you lose!";
+            computerScore++;
             break;
           case 'paper':
             document.getElementById("comp-choice").innerHTML = "Computer selects paper!";
             document.getElementById("results").innerHTML = "Scissors beats paper, you win!";
+            playerScore++;
             break;
           case 'scissors':
             document.getElementById("comp-choice").innerHTML = "Computer selects scissors!";
             document.getElementById("results").innerHTML = "It's a tie!";
             break;
         }
-      } else {
-        console.log("Please select a valid option!")
       }
 
-      console.log(`Current score is Player: ${playerScore}, Computer: ${computerScore}`)
+      console.log(`Current score is Player: ${playerScore}, Computer: ${computerScore}`);
+
+      match();
 
     }
 
